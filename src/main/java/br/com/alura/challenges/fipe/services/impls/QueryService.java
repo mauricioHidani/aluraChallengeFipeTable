@@ -6,6 +6,7 @@ import br.com.alura.challenges.fipe.exceptions.TransferProcessingException;
 import br.com.alura.challenges.fipe.services.IQueryService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -46,7 +47,7 @@ public class QueryService implements IQueryService {
 	public <T> List<T> findAll(final String query, final Class<T> clazz)
 			throws RequestException, TransferProcessingException {
 		try {
-			var list = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
+			final CollectionType list = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
 			final var response = request(query).body();
 			return mapper.readValue(response, list);
 
