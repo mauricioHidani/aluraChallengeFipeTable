@@ -65,11 +65,15 @@ public class QuickQueryController {
 	 * */
 	public History start() {
 		SuperTitleUtil.show(MainMenu.QUICK_QUERY.toString(), color);
-		findBrand();
-		findModel();
-		findStatistical();
+		try {
+			findBrand();
+			findModel();
+			findStatistical();
+			System.out.println(statisticalHistory);
 
-		System.out.println(statisticalHistory);
+		} catch (NotFoundException | RequestException | TransferProcessingException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 
 		return new History(statisticalHistory, brandHistory, modelHistory);
 	}
