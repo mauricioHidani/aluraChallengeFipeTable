@@ -15,7 +15,7 @@ import br.com.alura.challenges.fipe.models.VehicleStatistical;
 import br.com.alura.challenges.fipe.services.IVehicleBrandService;
 import br.com.alura.challenges.fipe.services.IVehicleModelService;
 import br.com.alura.challenges.fipe.services.IVehicleStatisticalService;
-import br.com.alura.challenges.fipe.utils.SuperTitleUtil;
+import br.com.alura.challenges.fipe.utils.MessageUtil;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -69,7 +69,7 @@ public class QueryNormalController {
 	 * @since Thursday, 24th October 2024.
 	 * */
 	public History start() {
-		SuperTitleUtil.show(MainMenu.QUERY.toString(), color);
+		MessageUtil.showTitle(MainMenu.QUERY.toString(), color);
 
 		resetHistories();
 		try {
@@ -77,7 +77,8 @@ public class QueryNormalController {
 			modelHistory = findModel();
 			statisticalHistory = findStatistical();
 		} catch (NotFoundException | RequestException | TransferProcessingException | IllegalArgumentException e) {
-			System.out.println(e.getMessage());
+			MessageUtil.showWarning(e.getMessage(), color);
+			return null;
 		}
 
 		return new History(statisticalHistory, brandHistory, modelHistory);
@@ -114,7 +115,7 @@ public class QueryNormalController {
 	 * */
 	protected List<VehicleBrand> findBrand()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		SuperTitleUtil.showSubtitle("\nVeículo", color);
+		MessageUtil.showSubtitle("\nVeículo", color);
 		vehicleType = showMenu.menuOfLabel(
 				"Insira o tipo de veículo que deseja realizar a consulta",
 				VehicleTypeMenu.class
@@ -143,7 +144,7 @@ public class QueryNormalController {
 	 * */
 	protected List<VehicleModel> findModel()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		SuperTitleUtil.showSubtitle("\nMarca", color);
+		MessageUtil.showSubtitle("\nMarca", color);
 		System.out.print("Insirá o código da marca para consultar os modelos: ");
 		vehicleBrandCode = scanner.nextInt();
 		scanner.nextLine();
@@ -167,7 +168,7 @@ public class QueryNormalController {
 	 * */
 	protected VehicleStatistical findStatistical()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		SuperTitleUtil.showSubtitle("\nEstatistica do veículo", color);
+		MessageUtil.showSubtitle("\nEstatistica do veículo", color);
 		System.out.print("Insira o código do modelo para realizar a operação: ");
 		vehicleModelCode = scanner.nextInt();
 		scanner.nextLine();
