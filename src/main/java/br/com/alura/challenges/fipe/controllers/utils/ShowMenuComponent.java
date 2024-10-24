@@ -55,6 +55,7 @@ public class ShowMenuComponent {
 		System.out.print("tipo: ");
 		final var choice = scanner.nextLine();
 
+
 		Optional<STATE> modelType = Arrays.stream(states)
 			.filter(state -> state.contains(choice))
 			.findFirst();
@@ -76,7 +77,7 @@ public class ShowMenuComponent {
 	) {
 		for (int i = 0; i < OPTIONS.length; i++) {
 			var parameters = new Object[]{
-				TerminalColor.CYAN, TerminalColor.RESET, OPTIONS[i]
+				color.put(TerminalColor.CYAN, "-"), OPTIONS[i]
 			};
 			if (showIndex) {
 				parameters = new Object[]{
