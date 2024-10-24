@@ -4,14 +4,14 @@ import br.com.alura.challenges.fipe.exceptions.NotFoundException;
 import br.com.alura.challenges.fipe.exceptions.RequestException;
 import br.com.alura.challenges.fipe.exceptions.TransferProcessingException;
 import br.com.alura.challenges.fipe.models.transfers.VehicleBrandDTO;
-import br.com.alura.challenges.fipe.services.IVehicleBrandService;
 import br.com.alura.challenges.fipe.services.IQueryService;
+import br.com.alura.challenges.fipe.services.IVehicleStepQueryService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class VehicleBrandService implements IVehicleBrandService {
+public class VehicleBrandService implements IVehicleStepQueryService {
 
 	private final IQueryService service;
 
