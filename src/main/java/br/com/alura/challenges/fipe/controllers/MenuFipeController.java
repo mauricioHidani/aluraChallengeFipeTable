@@ -11,29 +11,32 @@ public class MenuFipeController {
 	private final ShowMenuComponent showMenu;
 	private final QueryNormalController queryNormalController;
 	private final QuickQueryController quickQueryController;
+	private final LatestHistoryController latestHistoryController;
 
 	private History history;
 
 	public MenuFipeController(
 			final ShowMenuComponent showMenu,
 			final QueryNormalController queryNormalController,
-			final QuickQueryController quickQueryController
+			final QuickQueryController quickQueryController,
+			final LatestHistoryController latestHistoryController
 	) {
 		this.showMenu = showMenu;
 		this.queryNormalController = queryNormalController;
 		this.quickQueryController = quickQueryController;
+		this.latestHistoryController = latestHistoryController;
 	}
 
 	public void start() {
 		var option = MainMenu.QUERY;
 		do {
-			option = showMenu.menuOfCode("Escolha uma operação", MainMenu.class);
+			option = showMenu.menuOfCode("\nEscolha uma operação", MainMenu.class);
 			switch (option) {
 				case QUERY -> history = queryNormalController.start();
 				case QUICK_QUERY -> history = quickQueryController.start();
-				case LATEST_BRAND_HISTORY -> System.out.println();
-				case LATEST_MODEL_HISTORY -> System.out.println();
-				case LATEST_STATISTICAL_HISTORY -> System.out.println();
+				case LATEST_BRAND_HISTORY -> latestHistoryController.start(history.brandHistory(), option);
+				case LATEST_MODEL_HISTORY -> latestHistoryController.start(history.modelHistory(), option);
+				case LATEST_STATISTICAL_HISTORY -> latestHistoryController.start(history.statisticalHistory(), option);
 				case SAVE_HISTORY -> System.out.println();
 				default -> System.out.println("Opção inválida");
 			}
