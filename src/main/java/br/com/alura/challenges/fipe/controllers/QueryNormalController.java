@@ -16,6 +16,7 @@ import br.com.alura.challenges.fipe.models.VehicleStatistical;
 import br.com.alura.challenges.fipe.services.IVehicleBrandService;
 import br.com.alura.challenges.fipe.services.IVehicleModelService;
 import br.com.alura.challenges.fipe.services.IVehicleStatisticalService;
+import br.com.alura.challenges.fipe.utils.SuperTitleUtil;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -69,12 +70,7 @@ public class QueryNormalController {
 	 * @since Thursday, 24th October 2024.
 	 * */
 	public History start() {
-		System.out.println(
-			color.put(
-				TerminalColor.GREEN,
-				'\n' + MainMenu.QUERY.toString().toUpperCase()
-			)
-		);
+		SuperTitleUtil.show(MainMenu.QUERY.toString(), color);
 
 		resetHistories();
 		try {
