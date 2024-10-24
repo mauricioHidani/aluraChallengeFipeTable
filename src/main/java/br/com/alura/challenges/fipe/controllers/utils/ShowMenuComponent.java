@@ -43,6 +43,17 @@ public class ShowMenuComponent {
 		return null;
 	}
 
+	public <STATE extends Enum<STATE> & IMenu> STATE simpleMenuOfLabel(
+			final String message,
+			final Class<STATE> options
+	) {
+		System.out.print(message);
+		final var states = getOptions(options);
+		final var choice = scanner.nextLine();
+
+		return getChoiceOfLabel(choice, states);
+	}
+
 	public <STATE extends Enum<STATE> & IMenu> STATE menuOfLabel(
 			final String message,
 			final Class<STATE> options
@@ -55,16 +66,7 @@ public class ShowMenuComponent {
 		System.out.print("tipo: ");
 		final var choice = scanner.nextLine();
 
-
-		Optional<STATE> modelType = Arrays.stream(states)
-			.filter(state -> state.contains(choice))
-			.findFirst();
-		if (modelType.isEmpty()) {
-			System.out.println("Opção inválida.");
-			return null;
-		}
-
-		return modelType.get();
+		return getChoiceOfLabel(choice, states);
 	}
 
 	private <STATE extends Enum<STATE> & IMenu> STATE[] getOptions(final Class<STATE> options) {
@@ -86,5 +88,19 @@ public class ShowMenuComponent {
 			}
 			System.out.printf("\t%s %s\n", parameters);
 		}
+	}
+
+	private <STATE extends Enum<STATE> & IMenu> STATE getChoiceOfLabel(
+			final String choice,
+			final STATE[] states
+	) {
+		Optional<STATE> modelType = Arrays.stream(states)
+				.filter(state -> state.contains(choice))
+				.findFirst();
+		if (modelType.isEmpty()) {
+			System.out.println("Opção inválida.");
+			return null;
+		}
+		return modelType.get();
 	}
 }
