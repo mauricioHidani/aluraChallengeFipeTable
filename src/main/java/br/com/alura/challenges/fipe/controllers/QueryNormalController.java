@@ -1,7 +1,6 @@
 package br.com.alura.challenges.fipe.controllers;
 
 import br.com.alura.challenges.fipe.controllers.enums.MainMenu;
-import br.com.alura.challenges.fipe.controllers.enums.TerminalColor;
 import br.com.alura.challenges.fipe.controllers.enums.VehicleTypeMenu;
 import br.com.alura.challenges.fipe.controllers.utils.NavigationComponent;
 import br.com.alura.challenges.fipe.controllers.utils.ShowMenuComponent;
@@ -115,7 +114,7 @@ public class QueryNormalController {
 	 * */
 	protected List<VehicleBrand> findBrand()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		System.out.println(color.put(TerminalColor.BLUE, "\nVeículo"));
+		SuperTitleUtil.showSubtitle("\nVeículo", color);
 		vehicleType = showMenu.menuOfLabel(
 				"Insira o tipo de veículo que deseja realizar a consulta",
 				VehicleTypeMenu.class
@@ -133,7 +132,7 @@ public class QueryNormalController {
 	/**
 	 * <h1>findModel</h1>
 	 * <h3>Encontra Modelos</h3>
-	 * Procura pelos modelos do veículo especificado a partir da marca informada.
+	 * Procura pelos modelos do veículo especificado a partir do código da marca informada.
 	 *
 	 * @return List&lt;VehicleModel&gt; Modelos da marca encontrados
 	 * @throws NotFoundException Quando não encontrado modelos com o código da marca especificada.
@@ -144,7 +143,7 @@ public class QueryNormalController {
 	 * */
 	protected List<VehicleModel> findModel()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		System.out.println(color.put(TerminalColor.BLUE, "\nMarca"));
+		SuperTitleUtil.showSubtitle("\nMarca", color);
 		System.out.print("Insirá o código da marca para consultar os modelos: ");
 		vehicleBrandCode = scanner.nextInt();
 		scanner.nextLine();
@@ -168,7 +167,7 @@ public class QueryNormalController {
 	 * */
 	protected VehicleStatistical findStatistical()
 			throws NotFoundException, RequestException, TransferProcessingException, IllegalArgumentException {
-		System.out.println(color.put(TerminalColor.BLUE, "\nEstatistica do veículo"));
+		SuperTitleUtil.showSubtitle("\nEstatistica do veículo", color);
 		System.out.print("Insira o código do modelo para realizar a operação: ");
 		vehicleModelCode = scanner.nextInt();
 		scanner.nextLine();
