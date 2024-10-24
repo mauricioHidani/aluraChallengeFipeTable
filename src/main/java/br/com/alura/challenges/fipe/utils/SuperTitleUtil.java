@@ -9,4 +9,8 @@ public class SuperTitleUtil {
 			color.put(TerminalColor.GREEN, '\n' + title.toUpperCase())
 		);
 	}
+
+	public static void showSubtitle(final String subtitle, final TakeColorComponent color) {
+		System.out.println(color.put(TerminalColor.BLUE, subtitle));
+	}
 }
