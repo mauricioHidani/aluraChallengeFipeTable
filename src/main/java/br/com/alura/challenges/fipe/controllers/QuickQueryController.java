@@ -14,7 +14,7 @@ import br.com.alura.challenges.fipe.models.VehicleStatistical;
 import br.com.alura.challenges.fipe.services.IVehicleBrandService;
 import br.com.alura.challenges.fipe.services.IVehicleModelService;
 import br.com.alura.challenges.fipe.services.IVehicleStatisticalService;
-import br.com.alura.challenges.fipe.utils.SuperTitleUtil;
+import br.com.alura.challenges.fipe.utils.MessageUtil;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -64,7 +64,7 @@ public class QuickQueryController {
 	 * @since Thursday, 24th October 2024.
 	 * */
 	public History start() {
-		SuperTitleUtil.show(MainMenu.QUICK_QUERY.toString(), color);
+		MessageUtil.showTitle(MainMenu.QUICK_QUERY.toString(), color);
 		try {
 			findBrand();
 			findModel();
@@ -72,7 +72,8 @@ public class QuickQueryController {
 			System.out.println(statisticalHistory);
 
 		} catch (NotFoundException | RequestException | TransferProcessingException | IllegalArgumentException e) {
-			System.out.println(e.getMessage());
+			MessageUtil.showWarning(e.getMessage(), color);
+			return null;
 		}
 
 		return new History(statisticalHistory, brandHistory, modelHistory);
