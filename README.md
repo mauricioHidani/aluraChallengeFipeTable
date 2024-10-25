@@ -3,7 +3,7 @@
 📅23 de outubro de 2024 - 📍São Paulo, Brasil<br>
 🌎[@Alura](https://www.alura.com.br/) | [@One](https://www.oracle.com/br/)<br>
 
-![[256605554-7d1ab66a-2a1c-48e8-825e-2b233c2c1aaa](https://youtu.be/3RNu_1_wfxQ)](https://github.com/user-attachments/assets/84355ab1-237a-439e-8d40-5824b5a48557)
+[![256605554-7d1ab66a-2a1c-48e8-825e-2b233c2c1aaa](https://github.com/user-attachments/assets/84355ab1-237a-439e-8d40-5824b5a48557)](https://youtu.be/3RNu_1_wfxQ)
 
 ## Versões
 - [Java 21](https://docs.oracle.com/en/java/javase/21/)
