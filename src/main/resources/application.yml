@@ -1,0 +1,3 @@
+application:
+  parallelum:
+    path: 'https://parallelum.com.br/fipe/api/v1/'
