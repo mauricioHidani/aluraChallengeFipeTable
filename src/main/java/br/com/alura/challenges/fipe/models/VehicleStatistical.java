@@ -2,17 +2,33 @@ package br.com.alura.challenges.fipe.models;
 
 import br.com.alura.challenges.fipe.controllers.enums.TerminalColor;
 import br.com.alura.challenges.fipe.utils.CurrencyFormatterUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public record VehicleStatistical(
-	List<VehicleDataModel> models,
+	@JsonProperty("vehicleType")
 	String vehicleType,
+
+	@JsonProperty("model")
 	String model,
+
+	@JsonProperty("majorPrice")
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
 	BigDecimal majorPrice,
+
+	@JsonProperty("minorPrice")
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
 	BigDecimal minorPrice,
-	BigDecimal averagePrice
+
+	@JsonProperty("averagePrice")
+	@JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT)
+	BigDecimal averagePrice,
+
+	@JsonProperty("models")
+	List<VehicleDataModel> models
 ) {
 	@Override
 	public String toString() {
