@@ -41,6 +41,7 @@ public class MenuFipeController {
 				case LATEST_MODEL_HISTORY -> latestHistoryController.start(history.modelHistory(), option);
 				case LATEST_STATISTICAL_HISTORY -> latestHistoryController.start(history.statisticalHistory(), option);
 				case SAVE_HISTORY -> saveHistoryController.start(history);
+				case EXIT -> System.out.println("Aplicação de consulta da Tabela Fipe encerrada...");
 				default -> System.out.println("Opção inválida");
 			}
 		} while (option != MainMenu.EXIT);
