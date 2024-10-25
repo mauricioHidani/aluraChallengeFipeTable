@@ -36,12 +36,12 @@ public class VehicleStatisticalService implements IVehicleStatisticalService {
 
 		final var firstModel = models.get(0);
 		final var result = new VehicleStatistical(
-				models,
 				firstModel.type().toString(),
 				firstModel.modelName(),
 				BigDecimal.valueOf(stats.getMax()),
 				BigDecimal.valueOf(stats.getMin()),
-				BigDecimal.valueOf(stats.getAverage())
+				BigDecimal.valueOf(stats.getAverage()),
+				models
 		);
 
 		return Optional.of(result)
